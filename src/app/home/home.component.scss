@@ -1,0 +1,12 @@
+html,
+body,
+#body2 {
+  height: 100%;
+  min-height: 100%;
+}
+
+@media (min-width: 1024px) {
+  .sentenceContainer {
+    height: 70vh;
+  }
+}

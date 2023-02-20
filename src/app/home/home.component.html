@@ -1,13 +1,21 @@
 <div class="min-h-screen">
-  <div class="grid grid-cols-1 md:grid-cols-2 place-items-stretch min-h-full">
-    <div class="w-full h-full min-h-100 bg-slate-600">
-      <div class="flex justify-center px-6 pt-10 pb-8 sm:max-w-lg sm:px-10">
-        <h1 class="flex justify-center leading-normal text-4xl text-violet-300">
+  <div
+    class="grid grow grid-cols-1 md:grid-cols-2 place-items-stretch h-screen overflow-y-hidden"
+  >
+    <div
+      class="flex w-full h-full min-h-100 bg-slate-600 justify-items-center content-center w-full"
+    >
+      <div
+        class="flex px-6 pt-10 pb-8 lg:min-w-full sm:max-w-lg sm:px-10 content-center justify-self-center my-auto"
+      >
+        <h1
+          class="flex leading-normal lg:ml-10 text-4xl lg:text-7xl text-violet-300 justify-self-center w-full"
+        >
           Create sentences inspired by your favourite books
         </h1>
       </div>
     </div>
-    <div class="min-h-full">
+    <div class="">
       <div class="grid grid-cols-1 gap-4 md:grid-cols-2 p-4">
         <div class="flex justify-center bg-white hover:bg-slate-100 cursor-pointer py-10 pb-10 shadow-xl ring-1 ring-gray-900/5 sm:max-w-lg rounded-lg sm:px-10">
           <a class="font-bold text-slate-600 text-lg" [routerLink]="['/sentence-builder', 'HP']">
@@ -20,12 +28,13 @@
           </a>
         </div>
       </div>
-      <div class="grid grid-cols-1 w-full h-full bg-white px-4">
-        <span class="font-bold text-slate-600 text-2xl">
+      <div class="grid grid-rows-12 grid-cols-1 w-full bg-white">
+        <span class="ml-5 font-bold text-slate-600 text-2xl h-1 mb-10 mt-5">
           History
         </span>
-        <div class="bg-white py-10 px-0 mx-0 w-full shadow-xl ring-1 ring-gray-900/5 rounded-lg">
-        </div>
+        <div
+          class="row-start-2 row-end-5 bg-white py-10 py-5 sentenceContainer mx-0 w-11/12 shadow-xl ring-1 justify-self-center ring-gray-900/5 rounded-lg overflow-y-scroll"
+        ></div>
       </div>
     </div>
   </div>
