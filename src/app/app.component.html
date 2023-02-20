@@ -1,5 +1,116 @@
-<div *ngFor="let pos of (partsOfSpeech | async)">
-  {{pos.description}}
+<!-- <div class="container">
+  <div class="flex justify-start bg-white">
+    <strong class="text-3xl font-bold m-4">Sentence Builder</strong>
+  </div>
+  <div class="flex justify-space-between">
+    <div class="w-full aspect-video bg-red-400">Harry Potter</div>
+    <div class="w-full aspect-video bg-green-400">LOTR</div>
+  </div>
+</div> -->
+
+
+<!-- <h3 class="p-4 leading-normal text-lg text-slate-600">
+  We have categorized the words from the following books into parts of speech:
+</h3> -->
+<div class="min-h-screen">
+  <app-nav-bar></app-nav-bar>
+  <!-- <div class="relative bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10"> -->
+  <div class="grid grid-cols-1 md:grid-cols-2 place-items-stretch min-h-full">
+    <div class="w-full h-full min-h-100 bg-slate-600">
+      <div class="flex justify-center px-6 pt-10 pb-8 sm:max-w-lg sm:px-10">
+        <h1 class="flex justify-center leading-normal text-4xl text-violet-300">
+          Create sentences inspired by your favourite books
+        </h1>
+      </div>
+    </div>
+    <div class="min-h-full">
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 p-4">
+        <div class="flex justify-center bg-white hover:bg-slate-100 cursor-pointer py-10 pb-10 shadow-xl ring-1 ring-gray-900/5 sm:max-w-lg rounded-lg sm:px-10">
+          <span class="font-bold text-slate-600 text-lg">
+            Harry Potter ⚡
+          </span>
+        </div>
+        <div class="flex justify-center bg-white hover:bg-slate-100 cursor-pointer px-6 py-10 shadow-xl ring-1 ring-gray-900/5 sm:max-w-lg rounded-lg sm:px-10">
+          <span class="font-bold text-slate-600 text-lg">
+            Lord of the Rings 🧙‍♂️
+          </span>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 w-full h-full bg-white px-4">
+        <span class="font-bold text-slate-600 text-2xl">
+          History
+        </span>
+        <div class="bg-white py-10 px-0 mx-0 w-full shadow-xl ring-1 ring-gray-900/5 rounded-lg">
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- <div class="grid gap-4 grid-cols-2 grid-rows-2">
+  <span class="bg-red-400">01</span>
+  <span class="bg-green-400">02</span>
+  <span class="bg-red-400">03</span>
+  <span class="bg-green-400">04</span>
+  <span class="bg-red-400">05</span>
+  <span class="bg-green-400">06</span>
+</div> -->
+
+
+<!-- <div *ngFor="let pos of (partsOfSpeech | async)" class="text-3xl font-bold">
+  {{pos.description}}
+</div> -->
+
+<!-- <div class="relative flex min-h-screen flex-col justify-center overflow-hidden py-6 sm:py-12">
+  <img src="/img/beams.jpg" alt="" class="absolute top-1/2 left-1/2 max-w-none -translate-x-1/2 -translate-y-1/2" width="1308" />
+  <div class="absolute inset-0 bg-[url(/img/grid.svg)] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+  <div class="relative bg-white px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10">
+    <div class="mx-auto max-w-md">
+      <img src="/img/logo.svg" class="h-6" alt="Tailwind Play" />
+      <div class="divide-y divide-gray-300/50">
+        <div class="space-y-6 py-8 text-base leading-7 text-gray-600">
+          <p>An advanced online playground for Tailwind CSS, including support for things like:</p>
+          <ul class="space-y-4">
+            <li class="flex items-center">
+              <svg class="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="11" />
+                <path d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9" fill="none" />
+              </svg>
+              <p class="ml-4">
+                Customizing your
+                <code class="text-sm font-bold text-gray-900">tailwind.config.js</code> file
+              </p>
+            </li>
+            <li class="flex items-center">
+              <svg class="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="11" />
+                <path d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9" fill="none" />
+              </svg>
+              <p class="ml-4">
+                Extracting classes with
+                <code class="text-sm font-bold text-gray-900">@apply</code>
+              </p>
+            </li>
+            <li class="flex items-center">
+              <svg class="h-6 w-6 flex-none fill-sky-100 stroke-sky-500 stroke-2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="11" />
+                <path d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9" fill="none" />
+              </svg>
+              <p class="ml-4">Code completion with instant preview</p>
+            </li>
+          </ul>
+          <p>Perfect for learning how the framework works, prototyping a new idea, or creating a demo to share online.</p>
+        </div>
+        <div class="pt-8 text-base font-semibold leading-7">
+          <p class="text-gray-900">Want to dig deeper into Tailwind?</p>
+          <p>
+            <a href="https://tailwindcss.com/docs" class="text-sky-500 hover:text-sky-600">Read the docs &rarr;</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
 
 <router-outlet></router-outlet>
