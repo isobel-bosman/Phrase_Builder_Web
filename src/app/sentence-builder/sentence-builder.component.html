@@ -1,0 +1,48 @@
+<div class="flex justify-center">
+  <div class="p-4 w-full sm:w-3/4">
+    <h1 class="font-bold text-slate-600 text-2xl">
+      {{ sentenceType }} {{ sentenceType == "LOTR" ? "🧙‍♂️" : "⚡" }}
+    </h1>
+
+    <div
+      class="flex flex-wrap align- my-6 p-4 w-full  shadow-xl ring-1 ring-gray-900/5 rounded-lg"
+    >
+      <span class="w-full mb-4">Parts of speech:</span>
+      <span class="mb-5 mr-2" *ngFor="let pos of partsOfSpeech | async">
+        <app-word-chip
+          [text]="pos.description"
+          [type]="pos.partOfSpeech === '.' ? 'PUN' : pos.partOfSpeech"
+          (posSelected)="selectPos($event)"
+        ></app-word-chip>
+      </span>
+    </div>
+    <div
+      class="flex flex-wrap my-6 p-4 w-full  shadow-xl ring-1 ring-gray-900/5 rounded-lg"
+    >
+      <span class="w-full mb-4">My sentence:</span>
+      <span class="mb-5 mr-2" *ngFor="let word of sentence.words; let i = index">
+        <app-word-chip
+          [text]="word.word"
+          [type]="
+            word.partOfSpeech.partOfSpeech === '.'
+              ? 'PUN'
+              : word.partOfSpeech.partOfSpeech
+          "
+          [isEditable]="word.id ? false : true"
+          [isRemovable]="true"
+          [word]="word"
+          [index]="i"
+          (updateWord)="updateWord($event)"
+          (removeWord)="removeWord($event)"
+        ></app-word-chip>
+      </span>
+    </div>
+    <div
+      [ngClass]="isValid ? 'cursor-pointer bg-green-100 hover:bg-green-50 text-green-400 ring-green-400 ': 'cursor-none bg-slate-100 text-slate-400 ring-slate-400'"
+      class="flex justify-center font-bold my-6 p-4 w-full sm:w-50 shadow-xl ring-2 rounded-lg"
+      (click)="saveSentence()"
+      >
+      Save my sentence ✅
+    </div>
+  </div>
+</div>

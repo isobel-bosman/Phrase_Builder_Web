@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { PartOfSpeech } from '../models/part-of-speech.interface';
 import { Sentence } from '../models/sentence.interface';
+import { Word } from '../models/word.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +15,9 @@ export class SentenceService {
 
 	constructor(private httpClient: HttpClient) {}
 
-	getWords(partOfSpeech: string, type: string): Observable<string[]> {
-		return this.httpClient.get<string[]>(
-			`${this.apiBaseUrl}/api/Sentence/words?pos=${partOfSpeech}&type=${type}'`,
+	getWords(partOfSpeech: string, type: string): Observable<Word[]> {
+		return this.httpClient.get<Word[]>(
+			`${this.apiBaseUrl}/api/Sentence/words?pos=${partOfSpeech}&type=${type}`,
 		);
 	}
 

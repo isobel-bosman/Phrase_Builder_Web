@@ -1,0 +1,35 @@
+<span
+  class="flex items-center rounded-lg cursor-pointer p-2"
+  [ngClass]="type"
+  (click)="selectItem()"
+>
+  {{ text }}
+  <form *ngIf="isEditable">
+    <mat-form-field appearance="outline" >
+      <mat-label>{{word.partOfSpeech.description}}</mat-label>
+      <input type="text"
+             placeholder="Choose word"
+             aria-label="Word"
+             matInput
+             [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="wordChanged($event)" [displayWith]="getOptionText">
+        <mat-option *ngFor="let option of (words | async)" [value]="option">
+          {{option.word}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+  <span *ngIf="isRemovable" class="rounded-lg ml-2" (click)="removeItem()">
+    <svg
+      class="fill-slate-800 hover:fill-slate-500"
+      xmlns="http://www.w3.org/2000/svg"
+      height="18"
+      viewBox="0 96 960 960"
+      width="18"
+    >
+      <path
+        d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"
+      />
+    </svg>
+  </span>
+</span>
