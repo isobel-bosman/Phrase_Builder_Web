@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Sentence } from '../models/sentence.interface';
+import { SentenceService } from '../services/sentence.service';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+  sentenceHistory: Observable<Sentence[]> = this.sentenceService.getSentenceHistory();
 
-  constructor() { }
+  constructor(private sentenceService: SentenceService) { }
 
 }
