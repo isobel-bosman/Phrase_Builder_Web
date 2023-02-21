@@ -1,6 +1,4 @@
-# SentenceBuilder
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.3.
+# Sentence Builder 📚
 
 ## Development server
 
@@ -11,3 +9,10 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
+## Screenshots
+
+### Home Page: 
+![Home Page](https://user-images.githubusercontent.com/55981550/220307781-7650ed98-3413-42c1-b2b3-2e326aebc9be.png)
+
+### Sentence Builder
+![Sentence Builder]()
