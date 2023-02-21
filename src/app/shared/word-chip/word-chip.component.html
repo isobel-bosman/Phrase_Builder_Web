@@ -11,9 +11,10 @@
              placeholder="Choose word"
              aria-label="Word"
              matInput
+             [formControl]="wordControl"
              [matAutocomplete]="auto">
       <mat-autocomplete #auto="matAutocomplete" (optionSelected)="wordChanged($event)" [displayWith]="getOptionText">
-        <mat-option *ngFor="let option of (words | async)" [value]="option">
+        <mat-option *ngFor="let option of (filteredWords | async) ?? []" [value]="option">
           {{option.word}}
         </mat-option>
       </mat-autocomplete>
