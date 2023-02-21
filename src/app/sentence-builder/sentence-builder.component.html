@@ -39,14 +39,14 @@
     </div>
     <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
       <div
-        class="flex justify-center font-bold my-6 p-4 w-full sm:w-50 cursor-pointer bg-rose-100 hover:bg-rose-50 text-rose-400 ring-rose-400 shadow-xl ring-2 rounded-lg"
+        class="flex justify-center font-bold my-6 p-4 w-full sm:w-50 cursor-pointer bg-rose-100 hover:bg-rose-50 text-rose-400 ring-rose-400 shadow-md ring-2 rounded-lg"
         (click)="backToHome()"
         >
         Back to Home 🏡
       </div>
       <div
-        [ngClass]="isValid ? 'cursor-pointer bg-green-100 hover:bg-green-50 text-green-400 ring-green-400': 'cursor-none bg-gray-100 text-gray-400 ring-gray-400'"
-        class="flex justify-center font-bold my-6 p-4 w-full sm:w-50 shadow-xl ring-2 rounded-lg"
+        [ngClass]="isValid ? 'cursor-pointer bg-green-200 hover:bg-green-50 text-green-400 ring-green-400': 'cursor-none bg-gray-100 text-gray-400 ring-gray-400'"
+        class="flex justify-center font-bold my-6 p-4 w-full sm:w-50 shadow-sm ring-2 rounded-lg"
         (click)="saveSentence()"
         >
         Save my sentence ✅

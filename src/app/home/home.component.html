@@ -1,47 +1,14 @@
-<!-- <div class="min-h-screen">
-  <div class="grid grid-cols-1 md:grid-cols-2 place-items-stretch min-h-full">
-    <div class="w-full h-full min-h-100 bg-slate-600">
-      <div class="flex justify-center px-6 pt-10 pb-8 sm:max-w-lg sm:px-10">
-        <h1 class="flex justify-center leading-normal text-4xl text-violet-300">
-          Create sentences inspired by your favourite books
-        </h1>
-      </div>
-    </div>
-    <div class="min-h-full">
-      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 p-4">
-        <div class="flex justify-center bg-white hover:bg-slate-100 cursor-pointer py-10 pb-10 shadow-xl ring-1 ring-gray-900/5 sm:max-w-lg rounded-lg sm:px-10">
-          <a class="font-bold text-slate-600 text-lg" [routerLink]="['/sentence-builder', 'HP']">
-            Harry Potter ⚡
-          </a>
-        </div>
-        <div class="flex justify-center bg-white hover:bg-slate-100 cursor-pointer px-6 py-10 shadow-xl ring-1 ring-gray-900/5 sm:max-w-lg rounded-lg sm:px-10">
-          <a class="font-bold text-slate-600 text-lg" [routerLink]="['/sentence-builder', 'LOTR']">
-            Lord of the Rings 🧙‍♂️
-          </a>
-        </div>
-      </div>
-      <div class="grid grid-cols-1 w-full h-full bg-white px-4">
-        <span class="font-bold text-slate-600 text-2xl">
-          History
-        </span>
-        <div class="bg-white py-10 px-0 mx-0 w-full shadow-xl ring-1 ring-gray-900/5 rounded-lg">
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
-
 <div class="min-h-screen">
-  <div class="grid grow grid-cols-1 md:grid-cols-2 h-screen overflow-y-hidden">
+  <div class="grid grow grid-cols-1 md:grid-cols-2 h-screen sm:overflow-y-hidden">
     <div
-      class="flex content-center w-full h-full min-h-100 bg-slate-100 w-full"
+      class="flex content-center w-full h-full min-h-100 bg-violet-100 w-full"
     >
-      <div class="py-0 sm:pt-10 lg:min-w-full sm:max-w-lg px-5 my-auto">
+      <div class="py-4 sm:pt-8 lg:min-w-full sm:max-w-lg pl-5 sm:pl-8 my-auto">
         <h1
-          class="leading-normal font-bold text-4xl md:text-6xl lg:text-7xl sm:mb-10 text-violet-500 w-full"
+          class="leading-normal font-bold text-4xl md:text-6xl xl:text-7xl 2xl:text-8xl sm:mb-10 text-violet-500"
           style="line-height: 1.5"
         >
-          Create sentences inspired by your favourite books
+          Create sentences inspired by your favourite books.
         </h1>
       </div>
     </div>
@@ -51,13 +18,13 @@
           [routerLink]="['/sentence-builder', 'HP']"
           class="flex justify-center bg-white hover:bg-slate-100 cursor-pointer py-10 pb-10 shadow-xl ring-1 ring-gray-900/5 sm:max-w-lg rounded-lg sm:px-10"
         >
-          <p class="font-bold text-slate-600 text-lg">Harry Potter ⚡</p>
+          <p class="font-bold text-slate-600 text-xl">Harry Potter ⚡</p>
         </a>
         <a
           [routerLink]="['/sentence-builder', 'LOTR']"
           class="flex justify-center bg-white hover:bg-slate-100 cursor-pointer px-6 py-10 shadow-xl ring-1 ring-gray-900/5 sm:max-w-lg rounded-lg sm:px-10"
         >
-          <p class="font-bold text-slate-600 text-lg">Lord of the Rings 🧙‍♂️</p>
+          <p class="font-bold text-slate-600 text-xl">Lord of the Rings 🧙‍♂️</p>
         </a>
       </div>
       <div class="grid grid-rows-12 grid-cols-1 w-full bg-white p-5">
@@ -65,24 +32,31 @@
           History
         </span>
         <div
-          class="row-start-2 row-end-5 bg-white py-10 sentenceContainer w-full shadow-xl ring-1 justify-self-center ring-gray-900/5 rounded-lg overflow-y-scroll"
+          class="row-start-2 row-end-5 bg-white p-4 sentenceContainer w-full shadow-xl ring-1 justify-self-center ring-gray-900/5 rounded-lg overflow-y-scroll"
         >
           <div
-            class="flex flex-wrap"
+            class="grid grid-cols-12"
             *ngFor="let sentence of sentenceHistory | async"
           >
-            <span
-              class="mb-5 mr-2"
-              *ngFor="let word of sentence.words; let i = index"
+            <span class="col-span-1 my-auto flex justify-center">
+              {{ sentence.words[0].type === "LOTR" ? "🧙‍♂️" : "⚡" }}</span
             >
-              <app-word-chip
-                [text]="word.word"
-                [type]="
-                  word.partOfSpeech.partOfSpeech === '.'
-                    ? 'PUN'
-                    : word.partOfSpeech.partOfSpeech
-                "
-              ></app-word-chip>
+            <span
+              class="col-span-11 flex flex-wrap p-4 mb-2 w-full shadow-md ring-1 justify-self-center ring-gray-900/5 rounded-lg"
+            >
+              <span
+                class="mb-2 mr-2"
+                *ngFor="let word of sentence.words; let i = index"
+              >
+                <app-word-chip
+                  [text]="word.word"
+                  [type]="
+                    word.partOfSpeech.partOfSpeech === '.'
+                      ? 'PUN'
+                      : word.partOfSpeech.partOfSpeech
+                  "
+                ></app-word-chip>
+              </span>
             </span>
           </div>
         </div>

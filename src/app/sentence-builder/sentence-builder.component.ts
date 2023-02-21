@@ -56,6 +56,7 @@ export class SentenceBuilderComponent implements OnInit {
           this.sentence = {
             words: []
           };
+          this.backToHome();
         }
       });
     }

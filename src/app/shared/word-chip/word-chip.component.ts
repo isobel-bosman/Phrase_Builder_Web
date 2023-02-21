@@ -1,6 +1,14 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { map, Observable, startWith } from 'rxjs';
+import {
+  filter,
+  first,
+  map,
+  Observable,
+  startWith,
+  switchMap,
+  tap,
+} from 'rxjs';
 import { PartOfSpeech } from 'src/app/models/part-of-speech.interface';
 import { Word } from 'src/app/models/word.interface';
 import { SentenceService } from 'src/app/services/sentence.service';
@@ -39,18 +47,30 @@ export class WordChipComponent implements OnInit {
   ngOnInit(): void {
     if (this.isEditable) {
       this.sentenceService
-        .getWords(this.word.partOfSpeech.partOfSpeech === 'PUN' ? '.' : this.word.partOfSpeech.partOfSpeech, this.word.type)
-        .subscribe((val) => {
-          this.words = val;
-          this.filteredWords = this.wordControl.valueChanges.pipe(
-            startWith(''),
-            map((value) => {
-              const word = typeof value === 'string' ? value : value?.word;
-              return word ? this._filter(word as string) : this.words.slice();
-            })
-          );
-        });
-
+        .getWords(
+          this.word.partOfSpeech.partOfSpeech === 'PUN'
+            ? '.'
+            : this.word.partOfSpeech.partOfSpeech,
+          this.word.type
+        )
+        .pipe(
+          first(),
+          filter((v) => !!v),
+          tap((x) => (this.words = x)),
+          switchMap(
+            () =>
+              (this.filteredWords = this.wordControl.valueChanges.pipe(
+                startWith(''),
+                map((value) => {
+                  const word = typeof value === 'string' ? value : value?.word;
+                  return word
+                    ? this._filter(word as string)
+                    : this.words.slice();
+                })
+              ))
+          )
+        )
+        .subscribe();
     }
   }
 
