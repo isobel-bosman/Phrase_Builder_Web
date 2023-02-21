@@ -7,7 +7,9 @@
     <div
       class="flex flex-wrap align- my-6 p-4 w-full shadow-xl ring-1 ring-gray-900/5 rounded-lg"
     >
-      <span class="w-full mb-4">Select a part of speech:</span>
+      <span class="text-slate-600 text-lg w-full mb-4">
+        Select a part of speech
+      </span>
       <span class="mb-5 mr-2" *ngFor="let pos of partsOfSpeech | async">
         <app-word-chip
           [text]="pos.description"
@@ -19,7 +21,9 @@
     <div
       class="flex flex-wrap my-6 p-4 w-full shadow-xl ring-1 ring-gray-900/5 rounded-lg"
     >
-      <span class="w-full mb-4">My sentence:</span>
+      <span class="text-slate-600 text-lg w-full mb-4">
+        My sentence
+      </span>
       <span
         class="mb-5 mr-2"
         *ngFor="let word of sentence.words; let i = index"
