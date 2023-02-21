@@ -1,4 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewEncapsulation,
+} from '@angular/core';
 import { FormControl } from '@angular/forms';
 import {
   filter,
@@ -17,7 +24,7 @@ import { SentenceService } from 'src/app/services/sentence.service';
   selector: 'app-word-chip',
   templateUrl: './word-chip.component.html',
   styleUrls: ['./word-chip.component.scss'],
-  encapsulation : ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.None,
 })
 export class WordChipComponent implements OnInit {
   @Input() text = '';

@@ -1,5 +1,7 @@
 <div class="min-h-screen">
-  <div class="grid grow grid-cols-1 md:grid-cols-2 h-screen sm:overflow-y-hidden">
+  <div
+    class="grid grow grid-cols-1 md:grid-cols-2 h-screen sm:overflow-y-hidden"
+  >
     <div
       class="flex content-center w-full h-full min-h-100 bg-violet-100 w-full"
     >
@@ -8,11 +10,14 @@
           class="leading-normal font-bold text-4xl md:text-6xl xl:text-7xl 2xl:text-8xl sm:mb-10 text-violet-500"
           style="line-height: 1.5"
         >
-          Create sentences inspired by your favourite books.
+          Build sentences inspired by your favourite books.
         </h1>
       </div>
     </div>
-    <div class="">
+    <div class="pt-4 sm:my-auto">
+      <span class="font-bold text-slate-600 text-2xl h-1 mb-10 p-4">
+        Choose your inspiration
+      </span>
       <div class="grid grid-cols-1 gap-4 md:grid-cols-2 p-4">
         <a
           [routerLink]="['/sentence-builder', 'HP']"
@@ -29,7 +34,7 @@
       </div>
       <div class="grid grid-rows-12 grid-cols-1 w-full bg-white p-5">
         <span class="font-bold text-slate-600 text-2xl h-1 mb-10 mt-5">
-          History
+          Sentence History
         </span>
         <div
           class="row-start-2 row-end-5 bg-white p-4 sentenceContainer w-full shadow-xl ring-1 justify-self-center ring-gray-900/5 rounded-lg overflow-y-scroll"

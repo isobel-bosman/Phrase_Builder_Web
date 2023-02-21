@@ -5,7 +5,7 @@
     </h1>
 
     <div
-      class="flex flex-wrap align- my-6 p-4 w-full  shadow-xl ring-1 ring-gray-900/5 rounded-lg"
+      class="flex flex-wrap align- my-6 p-4 w-full shadow-xl ring-1 ring-gray-900/5 rounded-lg"
     >
       <span class="w-full mb-4">Select a part of speech:</span>
       <span class="mb-5 mr-2" *ngFor="let pos of partsOfSpeech | async">
@@ -20,7 +20,10 @@
       class="flex flex-wrap my-6 p-4 w-full shadow-xl ring-1 ring-gray-900/5 rounded-lg"
     >
       <span class="w-full mb-4">My sentence:</span>
-      <span class="mb-5 mr-2" *ngFor="let word of sentence.words; let i = index">
+      <span
+        class="mb-5 mr-2"
+        *ngFor="let word of sentence.words; let i = index"
+      >
         <app-word-chip
           [text]="word.word"
           [type]="
@@ -37,21 +40,24 @@
         ></app-word-chip>
       </span>
     </div>
-    <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+    <div class="grid grid-cols-1 gap-1 sm:gap-4 md:grid-cols-2">
       <div
-        class="flex justify-center font-bold my-6 p-4 w-full sm:w-50 cursor-pointer bg-rose-100 hover:bg-rose-50 text-rose-400 ring-rose-400 shadow-md ring-2 rounded-lg"
-        (click)="backToHome()"
-        >
-        Back to Home 🏡
-      </div>
-      <div
-        [ngClass]="isValid ? 'cursor-pointer bg-green-200 hover:bg-green-50 text-green-400 ring-green-400': 'cursor-none bg-gray-100 text-gray-400 ring-gray-400'"
-        class="flex justify-center font-bold my-6 p-4 w-full sm:w-50 shadow-sm ring-2 rounded-lg"
+        [ngClass]="
+          isValid
+            ? 'cursor-pointer bg-green-200 hover:bg-green-50 text-green-400 ring-green-400'
+            : 'cursor-none bg-gray-100 text-gray-400 ring-gray-400'
+        "
+        class="flex justify-center font-bold mt-2 sm:mt-6 mb-0 p-4 w-full sm:w-50 shadow-sm ring-2 rounded-lg"
         (click)="saveSentence()"
-        >
+      >
         Save my sentence ✅
       </div>
+      <div
+        class="flex justify-center font-bold mt-2 sm:mt-6 mb-0 p-4 w-full sm:w-50 cursor-pointer bg-rose-100 hover:bg-rose-50 text-rose-400 ring-rose-400 shadow-md ring-2 rounded-lg"
+        (click)="backToHome()"
+      >
+        Back to Home 🏡
+      </div>
     </div>
-
   </div>
 </div>

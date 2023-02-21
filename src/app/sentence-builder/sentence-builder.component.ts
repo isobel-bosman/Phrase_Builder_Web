@@ -9,13 +9,14 @@ import { SentenceService } from '../services/sentence.service';
 @Component({
   selector: 'app-sentence-builder',
   templateUrl: './sentence-builder.component.html',
-  styleUrls: ['./sentence-builder.component.scss']
+  styleUrls: ['./sentence-builder.component.scss'],
 })
 export class SentenceBuilderComponent implements OnInit {
-  sentenceType: string = "";
-  partsOfSpeech: Observable<PartOfSpeech[]> = this.sentenceService.getPartsOfSpeech();
+  sentenceType: string = '';
+  partsOfSpeech: Observable<PartOfSpeech[]> =
+    this.sentenceService.getPartsOfSpeech();
   sentence: Sentence = {
-    words: []
+    words: [],
   };
   isValid: boolean = false;
 
@@ -23,38 +24,38 @@ export class SentenceBuilderComponent implements OnInit {
     private route: ActivatedRoute,
     private sentenceService: SentenceService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.sentenceType = this.route.snapshot.paramMap.get('sentenceType') ?? "";
+    this.sentenceType = this.route.snapshot.paramMap.get('sentenceType') ?? '';
   }
 
-  selectPos(e: PartOfSpeech):void{
+  selectPos(e: PartOfSpeech): void {
     this.isValid = false;
     this.sentence.words.push({
-      id: "",
-      word: "",
+      id: '',
+      word: '',
       partOfSpeech: e,
-      type: this.sentenceType
+      type: this.sentenceType,
     });
   }
 
-  updateWord(word: {word:Word, index:number}):void{
+  updateWord(word: { word: Word; index: number }): void {
     this.sentence.words[word.index] = word.word;
     this.updateValidity();
   }
 
-  removeWord(index:number):void{
+  removeWord(index: number): void {
     this.sentence.words.splice(index, 1);
     this.updateValidity();
   }
 
-  saveSentence():void{
-    if(this.isValid){
-      this.sentenceService.createSentence(this.sentence).subscribe(val =>{
-        if(val){
+  saveSentence(): void {
+    if (this.isValid) {
+      this.sentenceService.createSentence(this.sentence).subscribe((val) => {
+        if (val) {
           this.sentence = {
-            words: []
+            words: [],
           };
           this.backToHome();
         }
@@ -62,13 +63,12 @@ export class SentenceBuilderComponent implements OnInit {
     }
   }
 
-  backToHome():void{
-    this.router.navigate(["/"])
+  backToHome(): void {
+    this.router.navigate(['/']);
   }
 
   private updateValidity(): void {
-    const empytWords = this.sentence.words.filter(word => word.id == "");
+    const empytWords = this.sentence.words.filter((word) => word.id == '');
     this.isValid = empytWords.length === 0 && this.sentence.words.length > 0;
   }
-
 }
